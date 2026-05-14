@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Demo - 智能助手展示平台</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 20L18 26L28 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="logo-text">AI Agent Demo</span>
+                </div>
+                <nav class="nav">
+                    <a href="#home" class="nav-link active">首页</a>
+                    <a href="#features" class="nav-link">功能</a>
+                    <a href="#demo" class="nav-link">演示</a>
+                    <a href="#learning" class="nav-link">学习</a>
+                </nav>
+                <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section id="home" class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            <span class="gradient-text">AI Agent</span>
+                            <br>智能助手展示平台
+                        </h1>
+                        <p class="hero-description">
+                            基于ReAct框架的智能AI助手，整合RAG、MCP、LLM等核心技术，
+                            为您提供智能对话、工具调用、知识检索等强大功能
+                        </p>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary" id="startDemoBtn">
+                                开始体验
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                            <button class="btn btn-secondary" id="viewDocsBtn">
+                                查看文档
+                            </button>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">5+</span>
+                                <span class="stat-label">智能工具</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">ReAct</span>
+                                <span class="stat-label">推理框架</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">开源免费</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="chat-preview">
+                            <div class="chat-message user">
+                                <div class="message-avatar">U</div>
+                                <div class="message-content">帮我搜索AI Agent的最新技术</div>
+                            </div>
+                            <div class="chat-message assistant">
+                                <div class="message-avatar">AI</div>
+                                <div class="message-content">
+                                    <div class="thinking-process">
+                                        <span class="thinking-label">思考中...</span>
+                                        <div class="thinking-steps">
+                                            <span class="step">分析用户请求</span>
+                                            <span class="step">调用搜索工具</span>
+                                            <span class="step">整理结果</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="features" class="features-section">
+                <div class="section-header">
+                    <h2 class="section-title">核心功能</h2>
+                    <p class="section-subtitle">探索AI Agent的强大能力</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">ReAct框架</h3>
+                        <p class="feature-description">
+                            推理-行动循环机制，智能分析问题并选择最佳工具执行任务
+                        </p>
+                        <div class="feature-tags">
+                            <span class="tag">推理</span>
+                            <span class="tag">行动</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="M21 21l-4.35-4.35"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">智能搜索</h3>
+                        <p class="feature-description">
+                            集成网络搜索能力，获取实时信息，回答需要最新数据的问题
+                        </p>
+                        <div class="feature-tags">
+                            <span class="tag">实时</span>
+                            <span class="tag">精准</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">文件处理</h3>
+                        <p class="feature-description">
+                            支持大文件分块读取、内容搜索，高效处理各类文档
+                        </p>
+                        <div class="feature-tags">
+                            <span class="tag">分块</span>
+                            <span class="tag">搜索</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">目录管理</h3>
+                        <p class="feature-description">
+                            浏览和管理文件系统，支持目录列表、文件操作等功能
+                        </p>
+                        <div class="feature-tags">
+                            <span class="tag">浏览</span>
+                            <span class="tag">管理</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M9 11l3 3L22 4"/>
+                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">待办管理</h3>
+                        <p class="feature-description">
+                            智能任务管理，支持添加、删除、标记完成等操作
+                        </p>
+                        <div class="feature-tags">
+                            <span class="tag">任务</span>
+                            <span class="tag">管理</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">网页抓取</h3>
+                        <p class="feature-description">
+                            提取网页内容，获取标题、正文和链接信息
+                        </p>
+                        <div class="feature-tags">
+                            <span class="tag">抓取</span>
+                            <span class="tag">解析</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="demo" class="demo-section">
+                <div class="section-header">
+                    <h2 class="section-title">在线演示</h2>
+                    <p class="section-subtitle">体验AI Agent的智能对话</p>
+                </div>
+                <div class="demo-container">
+                    <div class="chat-interface">
+                        <div class="chat-header">
+                            <div class="chat-status">
+                                <span class="status-dot online"></span>
+                                <span class="status-text">AI Agent 在线</span>
+                            </div>
+                            <div class="chat-actions">
+                                <button class="action-btn" id="clearChatBtn" title="清空对话">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="welcome-message">
+                                <div class="welcome-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                                        <line x1="9" y1="9" x2="9.01" y2="9"/>
+                                        <line x1="15" y1="9" x2="15.01" y2="9"/>
+                                    </svg>
+                                </div>
+                                <h3>欢迎使用 AI Agent</h3>
+                                <p>我可以帮您：</p>
+                                <ul>
+                                    <li>搜索网络信息</li>
+                                    <li>读取和分析文件</li>
+                                    <li>管理待办事项</li>
+                                    <li>浏览目录结构</li>
+                                    <li>抓取网页内容</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="chat-input-area">
+                            <div class="quick-actions">
+                                <button class="quick-btn" data-prompt="搜索AI Agent最新技术">搜索AI技术</button>
+                                <button class="quick-btn" data-prompt="列出当前目录的文件">浏览目录</button>
+                                <button class="quick-btn" data-prompt="添加待办事项：学习AI Agent">添加待办</button>
+                            </div>
+                            <div class="input-wrapper">
+                                <textarea 
+                                    id="messageInput" 
+                                    placeholder="输入您的问题..." 
+                                    rows="1"
+                                    maxlength="2000"
+                                ></textarea>
+                                <button class="send-btn" id="sendBtn" disabled>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <line x1="22" y1="2" x2="11" y2="13"/>
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="input-footer">
+                                <span class="char-count">0 / 2000</span>
+                                <span class="hint">按 Enter 发送，Shift + Enter 换行</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-sidebar">
+                        <div class="sidebar-section">
+                            <h4 class="sidebar-title">对话历史</h4>
+                            <div class="conversation-list" id="conversationList">
+                                <div class="conversation-item active">
+                                    <span class="conversation-title">新对话</span>
+                                    <span class="conversation-time">刚刚</span>
+                                </div>
+                            </div>
+                            <button class="new-conversation-btn" id="newConversationBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                                新对话
+                            </button>
+                        </div>
+                        <div class="sidebar-section">
+                            <h4 class="sidebar-title">可用工具</h4>
+                            <div class="tools-list" id="toolsList">
+                                <div class="tool-item">
+                                    <span class="tool-name">web_search</span>
+                                    <span class="tool-status">可用</span>
+                                </div>
+                                <div class="tool-item">
+                                    <span class="tool-name">read_file</span>
+                                    <span class="tool-status">可用</span>
+                                </div>
+                                <div class="tool-item">
+                                    <span class="tool-name">list_directory</span>
+                                    <span class="tool-status">可用</span>
+                                </div>
+                                <div class="tool-item">
+                                    <span class="tool-name">manage_todo</span>
+                                    <span class="tool-status">可用</span>
+                                </div>
+                                <div class="tool-item">
+                                    <span class="tool-name">fetch_webpage</span>
+                                    <span class="tool-status">可用</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="learning" class="learning-section">
+                <div class="section-header">
+                    <h2 class="section-title">5天学习计划</h2>
+                    <p class="section-subtitle">系统化掌握AI Agent核心技术</p>
+                </div>
+                <div class="learning-path">
+                    <div class="day-card day-1">
+                        <div class="day-header">
+                            <span class="day-number">Day 1</span>
+                            <span class="day-title">基础入门</span>
+                        </div>
+                        <div class="day-content">
+                            <h4 class="day-topic">学习目标</h4>
+                            <ul class="day-objectives">
+                                <li>理解AI Agent的基本概念</li>
+                                <li>掌握项目结构和技术栈</li>
+                                <li>成功运行项目</li>
+                            </ul>
+                            <h4 class="day-topic">核心知识点</h4>
+                            <div class="knowledge-tags">
+                                <span class="knowledge-tag">AI Agent概念</span>
+                                <span class="knowledge-tag">Spring Boot</span>
+                                <span class="knowledge-tag">OpenAI API</span>
+                            </div>
+                            <h4 class="day-topic">实践任务</h4>
+                            <ul class="day-tasks">
+                                <li>配置开发环境</li>
+                                <li>启动项目并测试API</li>
+                                <li>完成第一个对话</li>
+                            </ul>
+                            <div class="day-time">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                <span>预计时间：4小时</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-card day-2">
+                        <div class="day-header">
+                            <span class="day-number">Day 2</span>
+                            <span class="day-title">工具系统</span>
+                        </div>
+                        <div class="day-content">
+                            <h4 class="day-topic">学习目标</h4>
+                            <ul class="day-objectives">
+                                <li>理解工具注册机制</li>
+                                <li>掌握工具接口实现</li>
+                                <li>开发自定义工具</li>
+                            </ul>
+                            <h4 class="day-topic">核心知识点</h4>
+                            <div class="knowledge-tags">
+                                <span class="knowledge-tag">Tool接口</span>
+                                <span class="knowledge-tag">Spring IoC</span>
+                                <span class="knowledge-tag">JSON Schema</span>
+                            </div>
+                            <h4 class="day-topic">实践任务</h4>
+                            <ul class="day-tasks">
+                                <li>分析现有工具实现</li>
+                                <li>创建一个新工具</li>
+                                <li>测试工具调用</li>
+                            </ul>
+                            <div class="day-time">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                <span>预计时间：5小时</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-card day-3">
+                        <div class="day-header">
+                            <span class="day-number">Day 3</span>
+                            <span class="day-title">ReAct框架</span>
+                        </div>
+                        <div class="day-content">
+                            <h4 class="day-topic">学习目标</h4>
+                            <ul class="day-objectives">
+                                <li>深入理解ReAct框架原理</li>
+                                <li>掌握推理-行动循环</li>
+                                <li>优化Agent决策逻辑</li>
+                            </ul>
+                            <h4 class="day-topic">核心知识点</h4>
+                            <div class="knowledge-tags">
+                                <span class="knowledge-tag">ReAct模式</span>
+                                <span class="knowledge-tag">推理机制</span>
+                                <span class="knowledge-tag">提示工程</span>
+                            </div>
+                            <h4 class="day-topic">实践任务</h4>
+                            <ul class="day-tasks">
+                                <li>分析ReActAgent代码</li>
+                                <li>优化系统提示词</li>
+                                <li>测试复杂场景</li>
+                            </ul>
+                            <div class="day-time">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                <span>预计时间：6小时</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-card day-4">
+                        <div class="day-header">
+                            <span class="day-number">Day 4</span>
+                            <span class="day-title">LLM集成</span>
+                        </div>
+                        <div class="day-content">
+                            <h4 class="day-topic">学习目标</h4>
+                            <ul class="day-objectives">
+                                <li>掌握OpenAI API集成</li>
+                                <li>理解Function Calling</li>
+                                <li>优化API调用性能</li>
+                            </ul>
+                            <h4 class="day-topic">核心知识点</h4>
+                            <div class="knowledge-tags">
+                                <span class="knowledge-tag">OpenAI API</span>
+                                <span class="knowledge-tag">Function Calling</span>
+                                <span class="knowledge-tag">Token管理</span>
+                            </div>
+                            <h4 class="day-topic">实践任务</h4>
+                            <ul class="day-tasks">
+                                <li>分析OpenAIService实现</li>
+                                <li>测试不同模型</li>
+                                <li>优化响应时间</li>
+                            </ul>
+                            <div class="day-time">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                <span>预计时间：5小时</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-card day-5">
+                        <div class="day-header">
+                            <span class="day-number">Day 5</span>
+                            <span class="day-title">综合实践</span>
+                        </div>
+                        <div class="day-content">
+                            <h4 class="day-topic">学习目标</h4>
+                            <ul class="day-objectives">
+                                <li>完成综合项目实战</li>
+                                <li>部署应用到生产环境</li>
+                                <li>总结学习成果</li>
+                            </ul>
+                            <h4 class="day-topic">核心知识点</h4>
+                            <div class="knowledge-tags">
+                                <span class="knowledge-tag">Docker部署</span>
+                                <span class="knowledge-tag">性能优化</span>
+                                <span class="knowledge-tag">项目总结</span>
+                            </div>
+                            <h4 class="day-topic">实践任务</h4>
+                            <ul class="day-tasks">
+                                <li>开发完整功能</li>
+                                <li>Docker容器化部署</li>
+                                <li>编写学习报告</li>
+                            </ul>
+                            <div class="day-time">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                <span>预计时间：6小时</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">关于项目</h4>
+                    <p class="footer-text">
+                        AI Agent Demo是一个完整的学习实践项目，帮助开发者掌握AI Agent核心技术
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">技术栈</h4>
+                    <div class="footer-tags">
+                        <span class="footer-tag">Java 17</span>
+                        <span class="footer-tag">Spring Boot</span>
+                        <span class="footer-tag">OpenAI</span>
+                        <span class="footer-tag">ReAct</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">相关链接</h4>
+                    <div class="footer-links">
+                        <a href="https://github.com" target="_blank" class="footer-link">GitHub</a>
+                        <a href="https://docs.spring.io" target="_blank" class="footer-link">Spring文档</a>
+                        <a href="https://platform.openai.com" target="_blank" class="footer-link">OpenAI文档</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI Agent Demo. MIT License</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

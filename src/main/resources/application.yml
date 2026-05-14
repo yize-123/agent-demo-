@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ai-agent-demo
+  
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:your-api-key-here}
+      base-url: ${OPENAI_BASE_URL:https://api.openai.com}
+      chat:
+        options:
+          model: gpt-3.5-turbo-0613
+          temperature: 0.7
+
+app:
+  agent:
+    max-tool-calls: 5
+    max-history-length: 20
+  tools:
+    tavily:
+      api-key: ${TAVILY_API_KEY:}
+      mock-enabled: true
+
+logging:
+  level:
+    com.example.aigent: DEBUG
+    org.springframework.ai: DEBUG
