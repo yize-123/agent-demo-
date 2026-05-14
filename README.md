@@ -7,7 +7,9 @@
 | 特性 | 说明 |
 |------|------|
 | 🔄 **ReAct 框架** | 推理-行动循环，智能判断何时调用工具 |
-| 🔧 **5 种工具** | 网页搜索、网页抓取、文件读取、目录浏览、待办管理 |
+| 📚 **RAG 检索增强生成** | 向量存储、文档加载、语义搜索 |
+| 👥 **MCP 多智能体协作** | 智能体协调器、任务分发、多专家协作 |
+| 🔧 **9 种工具** | 网页搜索、网页抓取、文件读取、目录浏览、待办管理、计算器、时间查询、RAG查询、文档加载 |
 | 💬 **对话管理** | 支持多轮对话，会话历史自动保存 |
 | 🎨 **Web 界面** | 响应式前端，即开即用 |
 | 📦 **容器化** | 支持 Docker 一键部署 |
@@ -130,6 +132,39 @@ Content-Type: application/json
 | `read_file` | 读取本地文件 | "读取项目下的 README.md" |
 | `list_directory` | 浏览目录结构 | "列出当前目录的文件" |
 | `manage_todo` | 管理待办事项 | "帮我创建一个待办" |
+| `calculator` | 数学计算 | "计算 25 + 37" |
+| `get_time` | 获取时间/日期计算 | "今天几号？"、"10天后是几号？" |
+| `rag_query` | 知识库检索 | "项目的核心功能是什么？" |
+| `load_document` | 加载文档到知识库 | "把 README.md 加载到知识库" |
+
+### 📚 RAG 工具使用说明
+
+**加载文档到知识库：**
+```bash
+POST /api/agent/chat
+{
+  "message": "帮我把项目的 README.md 加载到知识库"
+}
+```
+
+**查询知识库：**
+```bash
+POST /api/agent/chat
+{
+  "message": "根据知识库，项目的核心功能是什么？"
+}
+```
+
+### 👥 MCP 多智能体协作
+
+系统内置多个专业智能体：
+
+| 智能体 | 名称 | 擅长领域 |
+|--------|------|----------|
+| `search_agent` | 搜索专家 | 网络搜索、信息收集 |
+| `document_agent` | 文档专家 | 文档处理、知识检索 |
+| `todo_agent` | 任务专家 | 任务管理、待办事项 |
+| `math_agent` | 数学专家 | 数学计算 |
 
 ## 🔌 添加自定义工具
 
@@ -189,17 +224,24 @@ src/main/java/com/example/aigent/
 │   ├── Tool.java                  # 🔧 工具接口
 │   ├── ToolCall.java              # 📞 工具调用
 │   ├── AgentResponse.java         # 📦 响应模型
-│   └── Conversation.java          # 💭 对话模型
+│   ├── Conversation.java          # 💭 对话模型
+│   └── Document.java              # 📄 RAG 文档模型
 ├── service/
 │   ├── OpenAIService.java         # 🤖 LLM 调用
 │   ├── ToolRegistry.java          # 📋 工具注册
-│   └── ConversationHistory.java   # 📜 对话历史
+│   ├── ConversationHistory.java   # 📜 对话历史
+│   ├── VectorStoreService.java    # 📚 向量存储服务 (RAG)
+│   └── MultiAgentCoordinator.java # 👥 多智能体协调器 (MCP)
 └── tools/
     ├── WebSearchTool.java         # 🔍 网页搜索
     ├── FetchFromWebTool.java       # 🌐 网页抓取
     ├── ReadFileTool.java           # 📄 文件读取
     ├── LSRepoTool.java            # 📁 目录浏览
-    └── TodoManagerTool.java       # ✅ 待办管理
+    ├── TodoManagerTool.java       # ✅ 待办管理
+    ├── CalculatorTool.java        # 🧮 计算器
+    ├── TimeTool.java              # ⏰ 时间查询
+    ├── RagQueryTool.java          # 🔍 RAG 查询
+    └── DocumentLoaderTool.java    # 📥 文档加载
 ```
 
 ## 📚 学习资源

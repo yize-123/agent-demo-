@@ -37,11 +37,47 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         
-        <!-- Spring AI -->
+        <!-- Spring AI OpenAI -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-openai</artifactId>
             <version>${spring-ai.version}</version>
+        </dependency>
+        
+        <!-- Spring AI Vector Store -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-vector-store</artifactId>
+            <version>${spring-ai.version}</version>
+        </dependency>
+        
+        <!-- Spring AI Embeddings -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-embeddings</artifactId>
+            <version>${spring-ai.version}</version>
+        </dependency>
+        
+        <!-- Spring AI Document -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-document</artifactId>
+            <version>${spring-ai.version}</version>
+        </dependency>
+        
+        <!-- SQLite for Vector Store (轻量级，适合演示) -->
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.45.1.0</version>
+        </dependency>
+        
+        <!-- H2 Database for development -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.2.224</version>
+            <scope>runtime</scope>
         </dependency>
         
         <!-- Jsoup for HTML parsing -->
